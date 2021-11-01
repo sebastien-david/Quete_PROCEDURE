@@ -19,7 +19,7 @@ CREATE TABLE SectAdherent(sect_adherent_id INT PRIMARY KEY IDENTITY(1,1),
                           FOREIGN KEY (FK_sect_id) REFERENCES Sect(sect_id))
 GO
 
-INSERT INTO Sect(name) VALUES ('Le Concombre Sacré'), ('Tomatologie'), ('Les abricots volant')
+INSERT INTO Sect(name) VALUES ('Le Concombre SacrÃ©'), ('Tomatologie'), ('Les abricots volant')
 GO
 
 DECLARE Sect_Cursor CURSOR SCROLL FOR
@@ -45,7 +45,7 @@ GO
 CREATE OR ALTER PROCEDURE sp_NombreAdherentsParSecte
 	AS
 		BEGIN
-			SELECT Sect.name AS "Nom de la secte", COUNT(SectAdherent.sect_adherent_id) AS "Nombre d'adhérents"
+			SELECT Sect.name AS "Nom de la secte", COUNT(SectAdherent.sect_adherent_id) AS "Nombre d'adhÃ©rents"
 			FROM SectAdherent
 			INNER JOIN Sect
 			ON FK_sect_id = sect_id
@@ -59,10 +59,10 @@ GO
 CREATE OR ALTER PROCEDURE sp_AssociationAdherentSecte
 	AS
 		BEGIN
-			SELECT Sect.name AS "Nom de la secte", SectAdherent.FK_adherent_id AS "Adhérent id"
-						FROM SectAdherent
-						INNER JOIN Sect
-						ON FK_sect_id = sect_id
+			SELECT Sect.name AS "Nom de la secte", SectAdherent.FK_adherent_id AS "AdhÃ©rent id"
+			FROM SectAdherent
+			INNER JOIN Sect
+			ON FK_sect_id = sect_id
 		END
 GO
 
